@@ -9,14 +9,21 @@ sudo apt install git nodejs npm  (check there version)
 git clone https://github.com/RushikeshBhabad/Mern-Projects-LP2.git
 
 cd Mern-Projects-LP2/
+
 cd Cloud-Computing/mern-projects/
+
 cd ecomm-app/
+
 cd backend/
 
 npm install
+
 sudo nano .env
+
 sudo npm install -g pm2
+
 pm2 start src/server.js --name ecomm-back
+
 pm2 logs 
 
 check at http://<Backend Public IP>:5000/
@@ -31,17 +38,25 @@ sudo apt install git nodejs npm
 git clone https://github.com/RushikeshBhabad/Mern-Projects-LP2.git
 
 cd Mern-Projects-LP2/
+
 cd Cloud-Computing/mern-projects/
+
 cd ecomm-app/
+
 cd frontend/
 
 npm install
+
 sudo apt install nginx
+
 sudo nano .env
+
 npm run build
 
 sudo cp -r dist/* /var/www/html/
+
 sudo systemctl start nginx
+
 sudo systemctl enable nginx
 
 
