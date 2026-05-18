@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Information Management Expert System</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #0f172a;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background: #1e293b;
+            padding: 25px;
+            border-radius: 12px;
+            width: 400px;
+            box-shadow: 0 0 20px rgba(0,0,0,0.5);
+        }
+
+        h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .section {
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin: 5px 0;
+            cursor: pointer;
+        }
+
+        button {
+            width: 100%;
+            padding: 10px;
+            background: #22c55e;
+            border: none;
+            border-radius: 8px;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #16a34a;
+        }
+
+        .result {
+            margin-top: 20px;
+            background: #020617;
+            padding: 15px;
+            border-radius: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h2>📁 Expert System</h2>
+
+    <!-- File Type -->
+    <div class="section">
+        <strong>File Type:</strong>
+        <label><input type="radio" name="file_type" value="text"> Text</label>
+        <label><input type="radio" name="file_type" value="video"> Video</label>
+        <label><input type="radio" name="file_type" value="image"> Image</label>
+    </div>
+
+    <!-- File Size -->
+    <div class="section">
+        <strong>File Size:</strong>
+        <label><input type="radio" name="size" value="small"> Small</label>
+        <label><input type="radio" name="size" value="large"> Large</label>
+    </div>
+
+    <!-- Importance -->
+    <div class="section">
+        <strong>Importance:</strong>
+        <label><input type="radio" name="importance" value="low"> Low</label>
+        <label><input type="radio" name="importance" value="medium"> Medium</label>
+        <label><input type="radio" name="importance" value="high"> High</label>
+    </div>
+
+    <!-- Usage -->
+    <div class="section">
+        <strong>Frequently Used:</strong>
+        <label><input type="radio" name="usage" value="yes"> Yes</label>
+        <label><input type="radio" name="usage" value="no"> No</label>
+    </div>
+
+    <button onclick="getRecommendation()">Get Recommendation</button>
+
+    <div class="result" id="result"></div>
+</div>
+
+<script>
+function getRecommendation() {
+    const file_type = document.querySelector('input[name="file_type"]:checked')?.value;
+    const size = document.querySelector('input[name="size"]:checked')?.value;
+    const importance = document.querySelector('input[name="importance"]:checked')?.value;
+    const usage = document.querySelector('input[name="usage"]:checked')?.value;
+
+    if (!file_type || !size || !importance || !usage) {
+        alert("Please select all options!");
+        return;
+    }
+
+    let result = "<h3>--- Recommendation ---</h3>";
+
+    // Storage decision (same logic as Python)
+    if (size === "large" && importance === "high") {
+        result += "<p>Store in Cloud Storage and keep a Backup.</p>";
+    } 
+    else if (size === "small" && importance === "low") {
+        result += "<p>Store Locally.</p>";
+    } 
+    else if (importance === "high" && usage === "yes") {
+        result += "<p>Store in Fast-access Storage (SSD/Cloud).</p>";
+    } 
+    else {
+        result += "<p>Store in Standard Storage.</p>";
+    }
+
+    // Backup decision
+    if (importance === "high") {
+        result += "<p>Backup: Required.</p>";
+    } 
+    else if (importance === "medium") {
+        result += "<p>Backup: Optional.</p>";
+    } 
+    else {
+        result += "<p>Backup: Not needed.</p>";
+    }
+
+    // Archiving decision
+    if (usage === "no" && importance === "medium") {
+        result += "<p>Archive the file.</p>";
+    } 
+    else if (usage === "no" && importance === "low") {
+        result += "<p>Consider deleting or archiving.</p>";
+    } 
+    else {
+        result += "<p>No archiving needed.</p>";
+    }
+
+    document.getElementById("result").innerHTML = result;
+}
+</script>
+
+</body>
+</html>
