@@ -1,0 +1,142 @@
+Windows PowerShell
+Copyright (C) Microsoft Corporation. All rights reserved.
+
+Install the latest PowerShell for new features and improvements! https://aka.ms/PSWindows
+
+PS C:\Users\athar> cd downloads
+PS C:\Users\athar\downloads> ssh -i website-key.pem ubuntu@16.176.4.35
+Welcome to Ubuntu 26.04 LTS (GNU/Linux 7.0.0-1004-aws x86_64)
+
+ * Documentation:  https://docs.ubuntu.com
+ * Management:     https://landscape.canonical.com
+ * Support:        https://ubuntu.com/pro
+
+ System information as of Mon May 18 19:00:52 UTC 2026
+
+  System load:  0.0               Temperature:           -273.1 C
+  Usage of /:   34.2% of 6.61GB   Processes:             126
+  Memory usage: 31%               Users logged in:       0
+  Swap usage:   0%                IPv4 address for ens5: 172.31.16.87
+
+
+Expanded Security Maintenance for Applications is not enabled.
+
+0 updates can be applied immediately.
+
+Enable ESM Apps to receive additional future security updates.
+See https://ubuntu.com/esm or run: sudo pro status
+
+
+Last login: Mon May 18 17:26:14 2026 from 106.192.129.248
+ubuntu@ip-172-31-16-87:~$ sudo apt update -y
+Hit:1 http://ap-southeast-2.ec2.archive.ubuntu.com/ubuntu resolute InRelease
+Hit:2 http://ap-southeast-2.ec2.archive.ubuntu.com/ubuntu resolute-updates InRelease
+Hit:3 http://ap-southeast-2.ec2.archive.ubuntu.com/ubuntu resolute-backports InRelease
+Hit:4 http://security.ubuntu.com/ubuntu resolute-security InRelease
+All packages are up to date.
+ubuntu@ip-172-31-16-87:~$ sudo apt upgrade -y
+Summary:
+  Upgrading: 0, Installing: 0, Removing: 0, Not Upgrading: 0
+ubuntu@ip-172-31-16-87:~$ sudo apt install apache2 -y
+apache2 is already the newest version (2.4.66-2ubuntu2.1).
+Summary:
+  Upgrading: 0, Installing: 0, Removing: 0, Not Upgrading: 0
+ubuntu@ip-172-31-16-87:~$ sudo systemctl start apache2
+ubuntu@ip-172-31-16-87:~$ sudo systemctl enable apache2
+Synchronizing state of apache2.service with SysV service script with /usr/lib/systemd/systemd-sysv-install.
+Executing: /usr/lib/systemd/systemd-sysv-install enable apache2
+ubuntu@ip-172-31-16-87:~$ cd /var/www/html
+ubuntu@ip-172-31-16-87:/var/www/html$ sudo rm index.html
+ubuntu@ip-172-31-16-87:/var/www/html$ ls
+ubuntu@ip-172-31-16-87:/var/www/html$ sudo nano index.html
+ubuntu@ip-172-31-16-87:/var/www/html$
+
+
+code:
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>Ubuntu EC2 Deployment</title>
+
+<style>
+
+body{
+    margin:0;
+    font-family:Arial,sans-serif;
+    background:#f2f4f8;
+}
+
+.container{
+    height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+
+.card{
+    width:500px;
+    background:white;
+    text-align:center;
+    padding:40px;
+    border-radius:15px;
+    box-shadow:0 5px 15px rgba(0,0,0,.2);
+}
+
+h1{
+    color:#0077ff;
+}
+
+button{
+    padding:12px 25px;
+    border:none;
+    border-radius:5px;
+    background:#0077ff;
+    color:white;
+    cursor:pointer;
+}
+
+button:hover{
+    background:#0058c9;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<div class="card">
+
+<h1>Hello from Ubuntu EC2</h1>
+
+<p>
+Static website deployed using Nginx on AWS EC2
+</p>
+
+<button onclick="display()">
+Click Me
+</button>
+
+<p id="msg"></p>
+
+</div>
+
+</div>
+
+<script>
+
+function display(){
+
+document.getElementById("msg").innerHTML=
+"Deployment Successful 🚀"
+
+}
+
+</script>
+
+</body>
+</html>
