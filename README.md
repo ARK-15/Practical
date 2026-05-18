@@ -29,6 +29,8 @@ pm2 logs
 check at http://<Backend Public IP>:5000/
 
 
+
+
 For Frontend -> In new Terminal
 
 ssh -i ecomm.pem ubuntu@<Frontend_Public_IP> 
