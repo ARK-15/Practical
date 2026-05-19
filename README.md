@@ -1,4 +1,8 @@
 # Practical
+https://github.com/rocky17p
+[aditya726](https://github.com/Aditya726)
+[rushikesh](https://github.com/rushikeshbhabad)
+
 For Backend
 
 chmod 400 ecomm.pem     
