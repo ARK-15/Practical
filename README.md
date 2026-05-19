@@ -3,6 +3,8 @@ https://github.com/rocky17p
 [aditya726](https://github.com/Aditya726)
 [rushikesh](https://github.com/rushikeshbhabad)
 
+https://chatgpt.com/share/6a0b4501-6194-8321-8018-2d92eddfc49c
+
 For Backend
 
 chmod 400 ecomm.pem     
